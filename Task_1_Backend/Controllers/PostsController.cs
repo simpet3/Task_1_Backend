@@ -73,6 +73,8 @@ namespace Task_1_Backend.Controllers
 
             _service.Add(post);
 
+           // return  Ok(new { restaurantId });
+
             return CreatedAtAction("GetPost", new { id = post.Id }, post);
         }
 
