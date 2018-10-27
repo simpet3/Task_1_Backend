@@ -11,6 +11,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Task_1_Backend.DataBase;
+using Task_1_Backend.Models;
+using Task_1_Backend.Repositories;
+using Task_1_Backend.Services.CommentsService;
+using Task_1_Backend.Services.PostService;
 
 namespace Task_1_Backend
 {
@@ -26,10 +30,17 @@ namespace Task_1_Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //neihardkodint connectionstringo - jo vieta prie appsettings 
             services.AddDbContext<MainDbContext>(options =>
                 options.UseSqlite("Data Source=myDb.db"));
 
             services.AddMvc();
+
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IRepository<Post>, PostRepository>();
+            services.AddScoped<IRepository<Comment>, CommentRepository>();
 
             services.AddSwaggerGen(c =>
             {
