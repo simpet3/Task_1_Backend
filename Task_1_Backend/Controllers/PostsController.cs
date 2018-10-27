@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Task_1_Backend.Models;
 using Task_1_Backend.Repositories;
-using Task_1_Backend.Repository;
 using Task_1_Backend.Services;
 
 namespace Task_1_Backend.Controllers
@@ -17,9 +16,9 @@ namespace Task_1_Backend.Controllers
     public class PostsController : Controller
     {
         private readonly IBaseService<Post> _service;
-        public PostsController(IRepository<Post> context)
+        public PostsController(DbContext context)
         {
-            _service = new BaseService<Post>(context);
+            _service = new BaseService<Post>(new PostRepository(context));
         }
 
         // GET: api/Posts
@@ -50,7 +49,7 @@ namespace Task_1_Backend.Controllers
 
         // PUT: api/Posts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPost([FromBody] Post post)
+        public async Task<IActionResult> UpdatePost([FromRoute] int id, [FromBody] Post post)
         {
             if (!ModelState.IsValid)
             {
@@ -65,7 +64,7 @@ namespace Task_1_Backend.Controllers
 
         // POST: api/Posts
         [HttpPost]
-        public async Task<IActionResult> PostPost([FromBody] Post post)
+        public async Task<IActionResult> CreatetPost([FromBody] Post post)
         {
             if (!ModelState.IsValid)
             {

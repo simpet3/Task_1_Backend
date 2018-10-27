@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Task_1_Backend.DataBase;
 using Task_1_Backend.Models;
-using Task_1_Backend.Repository;
 namespace Task_1_Backend.Controllers
 {
     [Produces("application/json")]
     [Route("api/Comments")]
     public class CommentsController : Controller
     {
-        private readonly Repository.Repository _context;
+        private readonly MainDbContext _context;
         
 
-        public CommentsController(Repository.Repository context)
+        public CommentsController(MainDbContext context)
         {
             _context = context;
         }
@@ -56,12 +56,7 @@ namespace Task_1_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != comment.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(comment).State = EntityState.Modified;
+            //_context.Entry(comment).State = EntityState.Modified;
 
             try
             {
@@ -73,10 +68,7 @@ namespace Task_1_Backend.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
             }
 
             return NoContent();
