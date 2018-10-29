@@ -15,6 +15,9 @@ using Task_1_Backend.Models;
 using Task_1_Backend.Repositories;
 using Task_1_Backend.Services.CommentsService;
 using Task_1_Backend.Services.PostService;
+using AutoMapper;
+using Task_1_Backend.Services.CommentsService.Mapper;
+using Task_1_Backend.Services.PostService.Mapper;
 
 namespace Task_1_Backend
 {
@@ -36,6 +39,8 @@ namespace Task_1_Backend
                 options.UseSqlite("Data Source=myDb.db"));
 
             services.AddMvc();
+
+            ConfigureAutoMapper(services);
 
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IPostService, PostService>();
@@ -66,6 +71,21 @@ namespace Task_1_Backend
 
 
             app.UseMvc();
+        }
+
+        private static void ConfigureAutoMapper(IServiceCollection services)
+        {
+           // services.AddAutoMapper(typeof(Startup));
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new PostProfile());
+                cfg.AddProfile(new CommentProfile());
+
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }

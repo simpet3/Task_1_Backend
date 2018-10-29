@@ -10,7 +10,7 @@ using Task_1_Backend.ViewModels;
 namespace Task_1_Backend.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Posts/{postId:int}/Comment")]
+    [Route("api/Posts/{postId:int}/Comments")]
     public class CommentsByPostController:Controller
     {
         private readonly ICommentService _commentService;
@@ -36,8 +36,6 @@ namespace Task_1_Backend.Controllers
             }
 
             var newCommentResponse = _commentService.CreateComment(newComment);
-
-            // return  Ok(new { restaurantId });
 
             return Ok(newCommentResponse);
         }

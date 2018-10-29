@@ -33,12 +33,8 @@ namespace Task_1_Backend.Controllers
 
         // GET: api/Posts/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPost([FromRoute] int id)
+        public IActionResult GetPost([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             var post =  _postService.GetPost(id);
 
@@ -52,7 +48,7 @@ namespace Task_1_Backend.Controllers
 
         // POST: api/Posts
         [HttpPost]
-        public async Task<IActionResult> CreatetPost([FromBody] NewPostViewModel post)
+        public IActionResult CreatetPost([FromBody] NewPostViewModel post)
         {
             if (!ModelState.IsValid)
             {

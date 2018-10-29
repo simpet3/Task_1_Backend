@@ -10,29 +10,30 @@ namespace Task_1_Backend.Repositories
     {
         private readonly DbContext _db;
         private readonly DbSet<TEntity> _dbSet;
-        public BaseRepository()
+
+        protected BaseRepository()
         {
         }
-         
-        public BaseRepository(DbContext db)
+
+        protected BaseRepository(DbContext db)
         {
             this._db = db;
             this._dbSet = db.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        public int Add(TEntity entity)
         {
-            if (entity != null)
-            {
-                _dbSet.Add(entity);
-            }
+            if (entity == null) throw new ArgumentNullException(nameof(TEntity));
 
+            _dbSet.Add(entity);
+            return _db.SaveChanges();
         }
 
         public void Delete(int id)
         {
             var entity = _dbSet.Find(id);
             _dbSet.Remove(entity);
+            Save();
         }
 
 
@@ -52,10 +53,10 @@ namespace Task_1_Backend.Repositories
             {
                 _dbSet.Attach(entity);
                 _db.Entry(entity).State = EntityState.Modified;
+                Save();
             }
 
         }
-
 
         public void Save()
         {

@@ -28,19 +28,19 @@ namespace Task_1_Backend.Services
         public void Add(TEntity entity)
         {
             repository.Add(entity);
-            repository.Save();
+
         }
 
         public void Delete(int id)
         {
             repository.Delete(id);
-            repository.Save();
+
         }
 
         public void update(TEntity entity)
         {
             repository.update(entity);
-            repository.Save();
+
         }
     }
 }

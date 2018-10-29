@@ -10,7 +10,7 @@ namespace Task_1_Backend.Repositories
 {
     public class PostRepository:BaseRepository<Post>
     {
-        public PostRepository(DbContext dbContext) : base(dbContext)
+        public PostRepository(MainDbContext dbContext) : base(dbContext)
         {
 
         }
