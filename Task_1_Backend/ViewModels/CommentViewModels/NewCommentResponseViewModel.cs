@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Task_1_Backend.ViewModels
+﻿namespace Task_1_Backend.ViewModels.CommentViewModels
 {
     public class NewCommentResponseViewModel
     {

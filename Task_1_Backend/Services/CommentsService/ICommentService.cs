@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Task_1_Backend.Models;
-using Task_1_Backend.ViewModels;
+using Task_1_Backend.ViewModels.CommentViewModels;
 
 namespace Task_1_Backend.Services.CommentsService
 {
     public interface ICommentService
     {
-        IEnumerable<CommentViewModel> GetComments(int postId);
-        NewCommentResponseViewModel CreateComment(int postId, NewCommentViewModel newComment);
+        Task<IEnumerable<CommentViewModel>> GetComments(int postId);
+        Task<NewCommentResponseViewModel> CreateComment(int postId, NewCommentViewModel newComment);
     }
 }

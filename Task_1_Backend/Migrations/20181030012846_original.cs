@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Collections.Generic;
 
 namespace Task_1_Backend.Migrations
 {
@@ -19,10 +18,7 @@ namespace Task_1_Backend.Migrations
                     EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Posts", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "Comments",

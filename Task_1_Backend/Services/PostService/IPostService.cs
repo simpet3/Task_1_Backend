@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Task_1_Backend.Models;
-using Task_1_Backend.ViewModels;
 using Task_1_Backend.ViewModels.PostViewModels;
 
 namespace Task_1_Backend.Services.PostService
 {
     public interface IPostService
     {
-        IEnumerable<PostViewModel> GetPosts();
-        PostViewModel GetPost(int id);
-        NewPostResponseViewModel CreatePost(NewPostViewModel post);
+        Task<IEnumerable<PostViewModel>> GetPosts();
+        Task<PostViewModel> GetPost(int id);
+        Task<NewPostResponseViewModel> CreatePost(NewPostViewModel post);
     }
 }
