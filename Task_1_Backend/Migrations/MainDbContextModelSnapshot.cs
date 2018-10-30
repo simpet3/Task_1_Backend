@@ -30,7 +30,7 @@ namespace Task_1_Backend.Migrations
 
                     b.Property<string>("MessageContent");
 
-                    b.Property<int?>("PostId");
+                    b.Property<int>("PostId");
 
                     b.HasKey("Id");
 
@@ -59,9 +59,10 @@ namespace Task_1_Backend.Migrations
 
             modelBuilder.Entity("Task_1_Backend.Models.Comment", b =>
                 {
-                    b.HasOne("Task_1_Backend.Models.Post")
+                    b.HasOne("Task_1_Backend.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

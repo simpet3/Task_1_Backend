@@ -10,9 +10,9 @@ namespace Task_1_Backend.Repositories
     {
         List<TEntity> GetAll();
         TEntity Get(int id);
-        int Add(TEntity entity);
+        TEntity Add(TEntity entity);
         void Delete(int id);
         void update(TEntity entity);
-        void Save();
+        bool Save();
     }
 }

@@ -15,6 +15,7 @@ namespace Task_1_Backend.Services.PostService.Mapper
         {
 
         }
+
         protected PostProfile(string profileName) : base(profileName)
         {
             CreateMap<Post,PostViewModel>();

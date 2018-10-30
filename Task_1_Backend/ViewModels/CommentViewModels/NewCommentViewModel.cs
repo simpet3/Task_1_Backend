@@ -9,6 +9,6 @@ namespace Task_1_Backend.ViewModels
     {
         public string MessageContent { get; set; }
         public string EmailAddress { get; set; }
-        public DateTime CreateTime { get; set; }
+        public DateTimeOffset CreateTime { get; set; }
     }
 }

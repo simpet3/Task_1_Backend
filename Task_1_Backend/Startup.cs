@@ -41,7 +41,7 @@ namespace Task_1_Backend
             services.AddMvc();
 
             ConfigureAutoMapper(services);
-
+            services.AddCors();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IRepository<Post>, PostRepository>();
@@ -69,6 +69,9 @@ namespace Task_1_Backend
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+            );
 
             app.UseMvc();
         }

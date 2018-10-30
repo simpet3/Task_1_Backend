@@ -35,7 +35,7 @@ namespace Task_1_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newCommentResponse = _commentService.CreateComment(newComment);
+            var newCommentResponse = _commentService.CreateComment(postId, newComment);
 
             return Ok(newCommentResponse);
         }

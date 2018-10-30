@@ -23,21 +23,25 @@ namespace Task_1_Backend.Services.PostService
         public IEnumerable<PostViewModel> GetPosts()
         {
             var posts = _postRepository.GetAll();
+
             return _mapper.Map<IEnumerable<PostViewModel>>(posts);
         }
 
         public PostViewModel GetPost(int id)
         {
             var post = _postRepository.Get(id);
+
             return _mapper.Map<PostViewModel>(post);
         }
 
         public NewPostResponseViewModel CreatePost(NewPostViewModel post)
         {
-            var newPost = _mapper.Map<Post>(post);
-            var postId = _postRepository.Add(newPost);
+            if (post == null) throw new ArgumentNullException(nameof(post));
 
-            var response = new NewPostResponseViewModel() {id = postId};
+            var newPost = _mapper.Map<Post>(post);
+            var addedPost = _postRepository.Add(newPost);
+
+            var response = new NewPostResponseViewModel() {Id = addedPost.Id };
             return response;
         }
     }

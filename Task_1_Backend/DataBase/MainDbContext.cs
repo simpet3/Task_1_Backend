@@ -11,8 +11,18 @@ namespace Task_1_Backend.DataBase
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
+        public MainDbContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>()
+                .HasMany<Comment>(p => p.Comments)
+                .WithOne(c => c.Post)
+                .HasForeignKey(c => c.PostId);              
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

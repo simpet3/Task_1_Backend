@@ -12,6 +12,6 @@ namespace Task_1_Backend.Models
         public string EmailAddress { get; set; }
         public DateTimeOffset CreateTime { get; set; }
 
-        public IList<Comment> Comments { get; set; } = new List<Comment>();
+        public IList<Comment> Comments { get; set; }
     }
 }

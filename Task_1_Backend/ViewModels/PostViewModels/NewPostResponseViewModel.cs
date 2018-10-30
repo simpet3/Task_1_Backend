@@ -7,6 +7,6 @@ namespace Task_1_Backend.ViewModels
 {
     public class NewPostResponseViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

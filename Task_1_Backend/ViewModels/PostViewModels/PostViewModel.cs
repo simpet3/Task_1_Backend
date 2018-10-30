@@ -11,13 +11,8 @@ namespace Task_1_Backend.ViewModels
         public string Title { get; set; }
         public string Content { get; set; }
         public string EmailAddress { get; set; }
-        public DateTime CreateTime { get; set; }
+        public DateTimeOffset CreateTime { get; set; }
 
         public int CommentsCount { get; set; }
     }
 }
-//pavadinimą;
-//tekstą;
-//kas jį parašė(el.paštas);
-//kada parašė;
-//komentarų kiekį.
