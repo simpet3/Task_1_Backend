@@ -11,6 +11,9 @@ namespace Task_1_Backend
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().Build();
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .UseUrls("http://localhost:50229/")
+                .Build();
     }
 }

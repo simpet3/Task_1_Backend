@@ -11,7 +11,7 @@ using Task_1_Backend.DataBase;
 namespace Task_1_Backend.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20181030012846_original")]
+    [Migration("20181030225933_original")]
     partial class original
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
